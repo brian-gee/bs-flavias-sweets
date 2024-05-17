@@ -1,0 +1,53 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+import { NAV_ITEMS } from "../consts";
+---
+
+<nav
+  id="navbar"
+  class="navbar navbar-expand-lg py-3 position-sticky sticky-top bg-primary"
+>
+  <div class="container">
+    <a href="/" class="navbar-brand ps-2 ps-lg-0">
+      <span class="fs-4">{SITE_TITLE}</span>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbar-collapse"
+      aria-controls="navbar-collapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse pt-2 pt-lg-0" id="navbar-collapse">
+      <ul class="navbar-nav ms-auto text-center">
+        {
+          NAV_ITEMS.map((item) => (
+            <li class="nav-item">
+              <a class="nav-link" href={item.href}>
+                {item.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  import { Collapse } from "bootstrap";
+  const $navbar = document.getElementById("navbar-collapse");
+  if ($navbar) {
+    const collapse = new Collapse($navbar, { toggle: false });
+    $navbar.querySelectorAll(".nav-item").forEach((link) => {
+      link.addEventListener("click", () => {
+        collapse.hide();
+      });
+    });
+  }
+</script>
