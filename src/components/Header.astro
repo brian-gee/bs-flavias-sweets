@@ -27,10 +27,10 @@ import { NAV_ITEMS } from "../consts";
       <ul class="navbar-nav ms-auto text-center">
         {
           NAV_ITEMS.map((item) => (
-            <li class="nav-item">
-              <a class="nav-link" href={item.href}>
+            <li class="nav-item ">
+              <HeaderLink class="nav-link text-dark" href={item.href}>
                 {item.text}
-              </a>
+              </HeaderLink>
             </li>
           ))
         }
