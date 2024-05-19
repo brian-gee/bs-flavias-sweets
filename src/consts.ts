@@ -6,10 +6,8 @@ export const SITE_DESCRIPTION = "Designing delicious cakes for all occasions.";
 
 export const NAV_ITEMS = [
 	{ text: "Home", href: "#" },
-	{ text: "Why choose us", href: "#features" },
 	{ text: "About Us", href: "#about" },
 	{ text: "Gallery", href: "#gallery" },
-	{ text: "What we make", href: "#products" },
 	{ text: "FAQ", href: "#faq" },
 	{ text: "Contact", href: "#contact" },
 ];
