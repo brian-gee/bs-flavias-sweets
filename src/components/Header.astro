@@ -24,30 +24,35 @@ import { NAV_ITEMS } from "../consts";
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse pt-2 pt-lg-0" id="navbar-collapse">
-      <ul class="navbar-nav ms-auto text-center">
+      <ul class="navbar-nav ms-auto text-center d-flex align-items-center">
         {
           NAV_ITEMS.map((item) => (
-            <li class="nav-item ">
+            <li class="nav-item">
               <HeaderLink class="nav-link text-dark" href={item.href}>
                 {item.text}
               </HeaderLink>
             </li>
           ))
         }
+        <li class="nav-item d-flex align-items-center">
+          <a href="#contact">
+            <button class="btn btn-secondary">Let’s Bake!</button>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
-</nav>
 
-<script>
-  import { Collapse } from "bootstrap";
-  const $navbar = document.getElementById("navbar-collapse");
-  if ($navbar) {
-    const collapse = new Collapse($navbar, { toggle: false });
-    $navbar.querySelectorAll(".nav-item").forEach((link) => {
-      link.addEventListener("click", () => {
-        collapse.hide();
+  <script>
+    import { Collapse } from "bootstrap";
+    const $navbar = document.getElementById("navbar-collapse");
+    if ($navbar) {
+      const collapse = new Collapse($navbar, { toggle: false });
+      $navbar.querySelectorAll(".nav-item").forEach((link) => {
+        link.addEventListener("click", () => {
+          collapse.hide();
+        });
       });
-    });
-  }
-</script>
+    }
+  </script>
+</nav>

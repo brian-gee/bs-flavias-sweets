@@ -1,30 +1,28 @@
 ---
 import { Image } from "astro:assets";
-// import TeamPhoto from "../assets/team-photo.jpeg";
+import Flavia from "../assets/flavia.webp";
 ---
 
-<div id="about" class="container">
-  <div class="px-4 py-5 my-5 text-center">
-    <h2 class="display-5 fw-bold text-body-emphasis">About Us</h2>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">
+<section id="about">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <Image
+        src={Flavia}
+        class="d-block mx-lg-auto img-fluid rounded"
+        alt="Bootstrap Themes"
+        width="700"
+        height="500"
+        loading="lazy"
+      />
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">About Us</h1>
+      <p class="lead">
         At Flavia's Sweets, we believe every cake tells a story. Our passion is
         creating custom cakes that not only look stunning but also taste
         amazing. From birthdays to weddings, our cakes add a special touch to
         your celebrations.
       </p>
     </div>
-    <div class="overflow-hidden">
-      <div class="container px-5">
-        <!-- <Image -->
-        <!--   src={TeamPhoto} -->
-        <!--   class="img-fluid border rounded-3 mb-4" -->
-        <!--   alt="Team photo" -->
-        <!--   width="700" -->
-        <!--   height="500" -->
-        <!--   loading="lazy" -->
-        <!-- /> -->
-      </div>
-    </div>
   </div>
-</div>
+</section>
