@@ -1,5 +1,4 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 import { NAV_ITEMS } from "../consts";
 ---
@@ -23,14 +22,15 @@ import { NAV_ITEMS } from "../consts";
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse pt-2 pt-lg-0" id="navbar-collapse">
       <ul class="navbar-nav ms-auto text-center d-flex align-items-center">
         {
           NAV_ITEMS.map((item) => (
             <li class="nav-item">
-              <HeaderLink class="nav-link text-dark" href={item.href}>
+              <a class="nav-link text-dark" href={item.href}>
                 {item.text}
-              </HeaderLink>
+              </a>
             </li>
           ))
         }
