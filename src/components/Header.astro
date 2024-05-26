@@ -1,15 +1,22 @@
 ---
 import { SITE_TITLE } from "../consts";
-import { NAV_ITEMS } from "../consts";
+import type { Link } from "../types/links";
+
+type Props = {
+  links: Link[];
+};
+
+const { links } = Astro.props;
 ---
 
 <nav
   id="navbar"
   class="navbar navbar-expand-lg py-3 position-sticky sticky-top bg-primary"
+  data-bs-theme="dark"
 >
   <div class="container">
-    <a href="/" class="navbar-brand ps-2 ps-lg-0">
-      <span class="fs-4">{SITE_TITLE}</span>
+    <a href="/" class="navbar-brand ps-2 ps-lg-0" aria-label={SITE_TITLE}>
+      {SITE_TITLE}
     </a>
     <button
       class="navbar-toggler"
@@ -22,19 +29,21 @@ import { NAV_ITEMS } from "../consts";
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse pt-2 pt-lg-0" id="navbar-collapse">
-      <ul class="navbar-nav ms-auto text-center d-flex align-items-center">
+      <ul class="navbar-nav ms-auto text-end d-flex align-items-center">
         {
-          NAV_ITEMS.map((item) => (
-            <li class="nav-item">
-              <a class="nav-link text-dark" href={item.href}>
-                {item.text}
+          links.map(({ href, text }) => (
+            <li class="nav-item ms-lg-4">
+              <a
+                href={href}
+                class="nav-link link-offset-2 d-block py-2 py-lg-0"
+              >
+                {text}
               </a>
             </li>
           ))
         }
-        <li class="nav-item d-flex align-items-center">
+        <li class="nav-item ms-lg-4">
           <a href="#contact">
             <button class="btn btn-secondary">Let’s Bake!</button>
           </a>
@@ -42,17 +51,24 @@ import { NAV_ITEMS } from "../consts";
       </ul>
     </div>
   </div>
-
-  <script>
-    import { Collapse } from "bootstrap";
-    const $navbar = document.getElementById("navbar-collapse");
-    if ($navbar) {
-      const collapse = new Collapse($navbar, { toggle: false });
-      $navbar.querySelectorAll(".nav-item").forEach((link) => {
-        link.addEventListener("click", () => {
-          collapse.hide();
-        });
-      });
-    }
-  </script>
 </nav>
+
+<script>
+  import { Collapse } from "bootstrap";
+  const $navbar = document.getElementById("navbar-collapse");
+  if ($navbar) {
+    const collapse = new Collapse($navbar, { toggle: false });
+    $navbar.querySelectorAll(".nav-item").forEach((link) => {
+      link.addEventListener("click", () => {
+        collapse.hide();
+      });
+    });
+  }
+</script>
+
+<style>
+  .navbar-nav {
+    width: 100%;
+    justify-content: flex-end;
+  }
+</style>
