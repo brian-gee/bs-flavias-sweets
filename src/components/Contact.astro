@@ -61,33 +61,47 @@
   }
 </style>
 
-<script src="https://web3forms.com/client/script.js" async defer></script>
+<script src="https://web3forms.com/client/script.js" async defer is:inline
+></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contactForm");
+    const form = document.getElementById(
+      "contactForm",
+    ) as HTMLFormElement | null;
 
-    form.addEventListener("submit", async function (event) {
-      event.preventDefault();
+    if (form) {
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-      const honeypot = document.getElementById("honeypot").value;
-      if (honeypot !== "") {
-        // If honeypot is filled, it's likely a bot
-        alert("Spam detected. Please try again.");
-        return;
-      }
+        const honeypotElement = document.getElementById(
+          "honeypot",
+        ) as HTMLInputElement | null;
+        const honeypot = honeypotElement ? honeypotElement.value : "";
 
-      const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
+        if (honeypot !== "") {
+          // If honeypot is filled, it's likely a bot
+          alert("Spam detected. Please try again.");
+          return;
+        }
+
+        const formData = new FormData(form);
+        try {
+          const response = await fetch((form as HTMLFormElement).action, {
+            method: (form as HTMLFormElement).method,
+            body: formData,
+          });
+
+          if (response.ok) {
+            window.location.href = "/success";
+          } else {
+            alert("There was an error submitting the form. Please try again.");
+          }
+        } catch (error) {
+          console.error("Error submitting the form:", error);
+          alert("There was an error submitting the form. Please try again.");
+        }
       });
-
-      if (response.ok) {
-        window.location.href = "/success";
-      } else {
-        alert("There was an error submitting the form. Please try again.");
-      }
-    });
+    }
   });
 </script>

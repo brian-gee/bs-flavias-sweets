@@ -15,7 +15,11 @@ const { links } = Astro.props;
   data-bs-theme="dark"
 >
   <div class="container">
-    <a href="/" class="navbar-brand ps-2 ps-lg-0" aria-label={SITE_TITLE}>
+    <a
+      href="/"
+      class="navbar-brand ps-2 ps-lg-0 text-dark"
+      aria-label={SITE_TITLE}
+    >
       {SITE_TITLE}
     </a>
     <button
@@ -36,18 +40,13 @@ const { links } = Astro.props;
             <li class="nav-item ms-lg-4">
               <a
                 href={href}
-                class="nav-link link-offset-2 d-block py-2 py-lg-0"
+                class="nav-link link-offset-2 d-block py-2 py-lg-0 text-dark"
               >
                 {text}
               </a>
             </li>
           ))
         }
-        <li class="nav-item ms-lg-4">
-          <a href="#contact">
-            <button class="btn btn-secondary">Let’s Bake!</button>
-          </a>
-        </li>
       </ul>
     </div>
   </div>

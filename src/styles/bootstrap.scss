@@ -5,25 +5,25 @@
 @import '../node_modules/bootstrap/scss/functions';
 
 
-// $black: #161616;
+$black: #161616;
 $primary: #ffc0cb;
 // // $warning: #F7C268;
 // $warning: #BA700B;
 // $danger: #B12A37;
-//
-// $base-size: 1.25rem;
-//
-// $spacer: $base-size;
-// $font-size-base: $base-size;
-// $font-family-sans-serif: 'Rubik Variable', sans-serif;
-// $small-font-size: 0.8rem;
-//
-// $link-color: $black;
-// $link-decoration: none;
-//
-// $navbar-dark-color: #fff;
-// $navbar-toggler-font-size: 1.25rem;
-// $navbar-dark-toggler-border-color: transparent;
+
+$base-size: 1.25rem;
+
+$spacer: $base-size;
+$font-size-base: $base-size;
+$font-family-sans-serif: 'Rubik Variable', sans-serif;
+$small-font-size: 0.8rem;
+
+$link-color: $black;
+$link-decoration: none;
+
+$navbar-dark-color: #161616;
+$navbar-toggler-font-size: 1.25rem;
+$navbar-dark-toggler-border-color: transparent;
 
 // 2. Include any default variable overrides here
 @import "../node_modules/bootstrap/scss/variables";
