@@ -53,7 +53,7 @@ const { links } = Astro.props;
 </nav>
 
 <script>
-  import { Collapse } from "bootstrap";
+  const Collapse = require("bootstrap").Collapse;
   const $navbar = document.getElementById("navbar-collapse");
   if ($navbar) {
     const collapse = new Collapse($navbar, { toggle: false });
