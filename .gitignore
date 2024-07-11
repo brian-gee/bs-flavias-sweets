@@ -25,3 +25,8 @@ pnpm-debug.log*
 
 # package lock
 bun.lockb
+
+# firebase
+firebase.json
+.firebaserc
+.firebase/

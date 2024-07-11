@@ -53,7 +53,7 @@ const { links } = Astro.props;
 </nav>
 
 <script>
-  const Collapse = require("bootstrap").Collapse;
+  import { Collapse } from "bootstrap";
   const $navbar = document.getElementById("navbar-collapse");
   if ($navbar) {
     const collapse = new Collapse($navbar, { toggle: false });
@@ -63,6 +63,17 @@ const { links } = Astro.props;
       });
     });
   }
+
+  window.addEventListener("scroll", () => {
+    const navbar = document.getElementById("navbar");
+    if (navbar) {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+  });
 </script>
 
 <style>
