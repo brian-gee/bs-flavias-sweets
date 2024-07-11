@@ -1,39 +1,94 @@
 ---
-import kidsaroundcake from "../assets/kids-around-cake.jpeg";
+import { Image } from "astro:assets";
+import Cake1 from "../assets/chanelCake.jpg";
+import Cake2 from "../assets/faceCake.jpg";
+import Cake3 from "../assets/jungleCake.jpg";
+
+const cakes = [
+  { src: Cake1, alt: "Chanel Cake" },
+  { src: Cake2, alt: "Face Cake" },
+  { src: Cake3, alt: "Jungle Cake" },
+];
 ---
 
 <div
-  class="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center text-center position-relative bg-dark"
-  style={`background-image: url(${kidsaroundcake.src}); background-size: cover; background-position: center; background-repeat: no-repeat;`}
+  class="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center text-center position-relative"
 >
-  <div
-    class="overlay bg-dark bg-opacity-75 position-absolute top-0 start-0 w-100 h-100"
-  >
+  <div class="blaze-slider w-100 my-4 px-2">
+    <div class="blaze-container">
+      <div class="blaze-track-container">
+        <div class="blaze-track">
+          {
+            cakes.map((cake) => (
+              <div class="d-flex justify-content-center">
+                <div
+                  class="overflow-hidden rounded-4"
+                  style="max-width: 400px; width: 100%;"
+                >
+                  <Image
+                    src={cake.src}
+                    alt={cake.alt}
+                    class="img-fluid w-100 h-auto"
+                    widths={[400, 800]}
+                    sizes="(max-width: 400px) 100vw, 400px"
+                  />
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="px-4 pt-5 my-5 position-relative text-light">
-    <h1 class="display-4 fw-bold text-white">Sweeten Your Celebrations</h1>
+  <div class="px-4 pt-3 position-relative">
+    <h1 class="display-4 fw-bold">Sweeten Your Celebrations</h1>
     <div class="col-lg-8 mx-auto">
-      <p class="lead mb-4 text-light">
+      <p class="lead mb-4">
         Welcome to Flavia's Sweets! We create exquisite cakes and delicious
         sweets, perfect for any occasion, right here in the South Florida area,
         including Hollywood and Miami.
       </p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <a href="#contact">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">
-            Order now
-          </button>
-        </a>
+        <a href="#contact" class="btn btn-primary btn-lg px-4">Order now</a>
       </div>
     </div>
   </div>
 </div>
 
-<style>
+<script>
+  import BlazeSlider from "blaze-slider";
+  import "blaze-slider/dist/blaze.css";
+
+  const el = document.querySelector(".blaze-slider");
+
+  if (el instanceof HTMLElement) {
+    new BlazeSlider(el, {
+      all: {
+        enableAutoplay: true,
+        autoplayInterval: 4000,
+        transitionDuration: 900,
+      },
+    });
+  } else {
+    console.error("Blaze slider element not found");
+  }
+</script>
+
+<style is:global>
+  .blaze-slider {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .blaze-track {
+    gap: 1rem;
+  }
+  .blaze-prev,
+  .blaze-next {
+    margin: 0 0.5rem;
+  }
   .overlay {
     z-index: 1;
   }
-
   .position-relative {
     z-index: 2;
   }
