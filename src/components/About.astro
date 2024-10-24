@@ -3,9 +3,10 @@ import { Image } from "astro:assets";
 import Flavia from "../assets/flavia.webp";
 ---
 
-<section id="about">
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+<div id="about" class="container">
+  <div class="row flex-lg-row-reverse align-items-center g-3">
     <div class="col-10 col-sm-8 col-lg-6">
+      <h1 class="display-5 fw-bold text-body-emphasis lh-1">About Us</h1>
       <Image
         src={Flavia}
         class="d-block mx-lg-auto img-fluid rounded"
@@ -15,14 +16,11 @@ import Flavia from "../assets/flavia.webp";
         loading="lazy"
       />
     </div>
-    <div class="col-lg-6">
-      <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">About Us</h1>
-      <p class="lead">
-        At Flavia's Sweets, we believe every cake tells a story. Our passion is
-        creating custom cakes that not only look stunning but also taste
-        amazing. From birthdays to weddings, our cakes add a special touch to
-        your celebrations.
-      </p>
-    </div>
+    <p class="lead">
+      At Flavia's Sweets, we believe every cake tells a story. Our passion is
+      creating custom cakes that not only look stunning but also taste amazing.
+      From birthdays to weddings, our cakes add a special touch to your
+      celebrations.
+    </p>
   </div>
-</section>
+</div>
